@@ -17,16 +17,16 @@ Read the full tutorial: [GraphQL-Tutorial.md](./GraphQL-Tutorial.md)
 ## 📊 Visual Guides
 
 ### GraphQL Architecture
-![GraphQL Architecture](https://www.wavemakeronline.com/learn/assets/graphql-architecture.png)
+![GraphQL Architecture](./graphql-architecture.svg)
 
-GraphQL uses a single endpoint and a type system to define your API, allowing clients to request exactly the data they need.
+GraphQL uses a single endpoint and a type system to define your API, allowing clients to request exactly the data they need. All clients (web, mobile, desktop) communicate with a single GraphQL server that can fetch data from multiple sources.
 
 ### GraphQL vs REST Comparison
-![GraphQL vs REST](https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F89e4b1fb-8ea2-4e8b-bbbb-a3c00d5ad1a1_1280x1664.gif)
+![GraphQL vs REST](./graphql-vs-rest.svg)
 
 **Key Differences:**
-- **REST**: Multiple endpoints, potential over-fetching/under-fetching
-- **GraphQL**: Single endpoint, precise data fetching
+- **REST**: Multiple endpoints, potential over-fetching/under-fetching, multiple requests
+- **GraphQL**: Single endpoint, precise data fetching, one request for all data
 
 ## 🎯 Key Concepts Covered
 
