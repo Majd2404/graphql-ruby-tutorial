@@ -1,0 +1,31 @@
+graph TB
+    subgraph "REST API - Multiple Requests"
+        Client1[Client]
+        Client1 -->|GET /users/1| UserEndpoint[User Endpoint]
+        Client1 -->|GET /users/1/posts| PostsEndpoint[Posts Endpoint]
+        Client1 -->|GET /posts/1/comments| CommentsEndpoint[Comments Endpoint]
+        
+        UserEndpoint -->|Returns ALL user fields| UserData["{ id, name, email, bio, age, address, phone, ... }"]
+        PostsEndpoint -->|Returns ALL post fields| PostsData["[{ id, title, content, created_at, updated_at, ... }]"]
+        CommentsEndpoint -->|Returns ALL comment fields| CommentsData["[{ id, content, author, created_at, ... }]"]
+        
+        style UserData fill:#ff9999
+        style PostsData fill:#ff9999
+        style CommentsData fill:#ff9999
+    end
+    
+    subgraph "GraphQL - Single Request"
+        Client2[Client]
+        Client2 -->|POST /graphql with query| GraphQLEndpoint[GraphQL Endpoint]
+        
+        GraphQLEndpoint -->|Returns ONLY requested fields| GraphQLData["{ user: { name, email, posts: [{ title, comments: [{ content }] }] } }"]
+        
+        style GraphQLData fill:#99ff99
+    end
+    
+    subgraph "Legend"
+        OverFetch[Over-fetching: Get unwanted data]
+        ExactFetch[Exact-fetching: Get only what you need]
+        style OverFetch fill:#ff9999
+        style ExactFetch fill:#99ff99
+    end
