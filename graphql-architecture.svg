@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <defs>
+    <style>
+      .title { font: bold 28px sans-serif; fill: #2c3e50; }
+      .section-title { font: bold 18px sans-serif; fill: #34495e; }
+      .text { font: 14px sans-serif; fill: #555; }
+      .small-text { font: 12px sans-serif; fill: #666; }
+      .code { font: 12px monospace; fill: #c0392b; }
+      .client-box { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .graphql-box { fill: #e056fd; stroke: #c932e8; stroke-width: 3; }
+      .server-box { fill: #2ecc71; stroke: #27ae60; stroke-width: 2; }
+      .db-box { fill: #95a5a6; stroke: #7f8c8d; stroke-width: 2; }
+      .arrow { fill: none; stroke: #34495e; stroke-width: 2; marker-end: url(#arrowhead); }
+      .arrow-bi { fill: none; stroke: #34495e; stroke-width: 2; marker-end: url(#arrowhead); marker-start: url(#arrowback); }
+      .white-text { fill: white; font: bold 14px sans-serif; }
+      .layer-box { fill: none; stroke: #bdc3c7; stroke-width: 1; stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e" />
+    </marker>
+    <marker id="arrowback" markerWidth="10" markerHeight="10" refX="1" refY="3" orient="auto">
+      <polygon points="10 0, 0 3, 10 6" fill="#34495e" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" class="title">GraphQL Architecture</text>
+  
+  <!-- Client Layer -->
+  <rect x="50" y="80" width="900" height="120" class="layer-box"/>
+  <text x="70" y="100" class="section-title">Client Layer</text>
+  
+  <!-- Clients -->
+  <g id="web-client">
+    <rect x="100" y="120" width="120" height="60" rx="5" class="client-box"/>
+    <text x="160" y="155" text-anchor="middle" class="white-text">Web App</text>
+  </g>
+  
+  <g id="mobile-client">
+    <rect x="260" y="120" width="120" height="60" rx="5" class="client-box"/>
+    <text x="320" y="155" text-anchor="middle" class="white-text">Mobile App</text>
+  </g>
+  
+  <g id="desktop-client">
+    <rect x="420" y="120" width="120" height="60" rx="5" class="client-box"/>
+    <text x="480" y="155" text-anchor="middle" class="white-text">Desktop App</text>
+  </g>
+  
+  <!-- Query Examples -->
+  <rect x="580" y="110" width="350" height="80" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+  <text x="755" y="130" text-anchor="middle" font-weight="bold" class="text">Clients send GraphQL queries:</text>
+  <text x="600" y="150" class="code">query { user { name, posts { title } } }</text>
+  <text x="600" y="170" class="code">mutation { createUser(name: "Alice") }</text>
+  
+  <!-- Arrows from clients to GraphQL -->
+  <path d="M 160 180 L 160 250" class="arrow"/>
+  <path d="M 320 180 L 320 250" class="arrow"/>
+  <path d="M 480 180 L 480 250" class="arrow"/>
+  
+  <!-- GraphQL Layer -->
+  <rect x="50" y="230" width="900" height="200" class="layer-box"/>
+  <text x="70" y="250" class="section-title">GraphQL Layer</text>
+  
+  <!-- Single GraphQL Endpoint -->
+  <rect x="250" y="270" width="500" height="80" rx="8" class="graphql-box"/>
+  <text x="500" y="295" text-anchor="middle" class="white-text" font-size="18">GraphQL Server</text>
+  <text x="500" y="318" text-anchor="middle" class="white-text">/graphql endpoint</text>
+  <text x="500" y="338" text-anchor="middle" class="white-text" font-size="12">Schema • Resolvers • Type System</text>
+  
+  <!-- GraphQL Components -->
+  <g id="schema">
+    <rect x="100" y="370" width="140" height="40" rx="5" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="170" y="395" text-anchor="middle" class="white-text">Schema</text>
+  </g>
+  
+  <g id="resolvers">
+    <rect x="280" y="370" width="140" height="40" rx="5" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="350" y="395" text-anchor="middle" class="white-text">Resolvers</text>
+  </g>
+  
+  <g id="validation">
+    <rect x="460" y="370" width="140" height="40" rx="5" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="530" y="395" text-anchor="middle" class="white-text">Validation</text>
+  </g>
+  
+  <g id="execution">
+    <rect x="640" y="370" width="140" height="40" rx="5" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="710" y="395" text-anchor="middle" class="white-text">Execution</text>
+  </g>
+  
+  <!-- Arrows from GraphQL to Data Sources -->
+  <path d="M 350 430 L 200 500" class="arrow"/>
+  <path d="M 500 430 L 400 500" class="arrow"/>
+  <path d="M 650 430 L 600 500" class="arrow"/>
+  
+  <!-- Data Sources Layer -->
+  <rect x="50" y="460" width="900" height="160" class="layer-box"/>
+  <text x="70" y="480" class="section-title">Data Sources</text>
+  
+  <!-- Database -->
+  <g id="database">
+    <rect x="120" y="510" width="140" height="80" rx="5" class="server-box"/>
+    <text x="190" y="540" text-anchor="middle" class="white-text">PostgreSQL</text>
+    <text x="190" y="560" text-anchor="middle" class="white-text">Database</text>
+    <text x="190" y="578" text-anchor="middle" class="white-text" font-size="11">Users, Posts</text>
+  </g>
+  
+  <!-- REST API -->
+  <g id="rest-api">
+    <rect x="320" y="510" width="140" height="80" rx="5" class="server-box"/>
+    <text x="390" y="540" text-anchor="middle" class="white-text">REST API</text>
+    <text x="390" y="560" text-anchor="middle" class="white-text">External Service</text>
+    <text x="390" y="578" text-anchor="middle" class="white-text" font-size="11">Weather Data</text>
+  </g>
+  
+  <!-- Microservice -->
+  <g id="microservice">
+    <rect x="520" y="510" width="140" height="80" rx="5" class="server-box"/>
+    <text x="590" y="540" text-anchor="middle" class="white-text">Microservice</text>
+    <text x="590" y="560" text-anchor="middle" class="white-text">Payment Service</text>
+    <text x="590" y="578" text-anchor="middle" class="white-text" font-size="11">Stripe API</text>
+  </g>
+  
+  <!-- Cache -->
+  <g id="cache">
+    <rect x="720" y="510" width="140" height="80" rx="5" class="server-box"/>
+    <text x="790" y="540" text-anchor="middle" class="white-text">Redis Cache</text>
+    <text x="790" y="560" text-anchor="middle" class="white-text">Session Store</text>
+    <text x="790" y="578" text-anchor="middle" class="white-text" font-size="11">User Sessions</text>
+  </g>
+  
+  <!-- Key Benefits -->
+  <g id="benefits">
+    <rect x="50" y="640" width="900" height="50" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+    <text x="70" y="660" class="text" font-weight="bold">✓ Single Endpoint</text>
+    <text x="220" y="660" class="text" font-weight="bold">✓ Flexible Queries</text>
+    <text x="370" y="660" class="text" font-weight="bold">✓ Strong Typing</text>
+    <text x="520" y="660" class="text" font-weight="bold">✓ Multiple Data Sources</text>
+    <text x="720" y="660" class="text" font-weight="bold">✓ No Over-fetching</text>
+    
+    <text x="70" y="678" class="small-text">/graphql for all</text>
+    <text x="220" y="678" class="small-text">Request what you need</text>
+    <text x="370" y="678" class="small-text">Schema validation</text>
+    <text x="520" y="678" class="small-text">Unify different APIs</text>
+    <text x="720" y="678" class="small-text">Precise data fetching</text>
+  </g>
+</svg>
